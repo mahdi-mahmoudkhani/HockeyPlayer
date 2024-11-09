@@ -88,3 +88,14 @@ def PlayerMover(gameMap: list, playerLocation: tuple, direction: str, ballsLocat
 
     return gameMap, playerLocation, ballsLocations
 
+def checkIfBallIsInGoal(gameMap: list, ballsLocations: list, goalLocations: list):
+    '''
+    This function checks if a ball is in a goal and returns the updated map, balls locations and goal locations.
+    '''
+    for ball in ballsLocations:
+        if ball in goalLocations:
+            ballsLocations.remove(ball)
+            goalLocations.remove(ball)
+            gameMap[ball[0]][ball[1]] = 'X'
+    
+    return gameMap, ballsLocations, goalLocations
