@@ -17,3 +17,30 @@ def MapCreator():
     obstacles = [(rowIndex, colIndex, 'left') for rowIndex, row in enumerate(gameMap) for colIndex, cell in enumerate(row) if 'X' in cell]
 
     return gameMap, playerLocation, ballsLocations, goalLocations, obstacles
+
+def OpstaclesUpdator(gameMap: list, obstacles: list):
+    '''
+    This function updates the location of obstacles in the map based on the direction of the obstacles. and returns the updated map and obstacles.
+    '''
+    for obstacle in obstacles:
+        rowIndex, colIndex, direction = obstacle
+        # update the location of the obstacle based on its direction
+        # update the direction of the obstacle 
+        if direction == 'left':
+            gameMap[rowIndex][colIndex] = '0'
+            gameMap[rowIndex][colIndex - 1] = 'X'
+            obstacles[obstacles.index(obstacle)] = (rowIndex, colIndex - 1, 'down')
+        elif direction == 'down':
+            gameMap[rowIndex][colIndex] = '0'
+            gameMap[rowIndex + 1][colIndex] = 'X'
+            obstacles[obstacles.index(obstacle)] = (rowIndex + 1, colIndex, 'right')
+        elif direction == 'right':
+            gameMap[rowIndex][colIndex] = '0'
+            gameMap[rowIndex][colIndex + 1] = 'X'
+            obstacles[obstacles.index(obstacle)] = (rowIndex, colIndex + 1, 'up')
+        elif direction == 'up':
+            gameMap[rowIndex][colIndex] = '0'
+            gameMap[rowIndex - 1][colIndex] = 'X'
+            obstacles[obstacles.index(obstacle)] = (rowIndex - 1, colIndex, 'left')
+
+    return gameMap, obstacles
