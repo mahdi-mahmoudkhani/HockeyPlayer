@@ -44,3 +44,47 @@ def OpstaclesUpdator(gameMap: list, obstacles: list):
             obstacles[obstacles.index(obstacle)] = (rowIndex - 1, colIndex, 'left')
 
     return gameMap, obstacles
+
+def PlayerMover(gameMap: list, playerLocation: tuple, direction: str, ballsLocations: list):
+    '''
+    This function moves the player in the map based on the direction and returns the updated map, player location and balls locations.
+    '''
+    rowIndex, colIndex = playerLocation
+    # move the player based on the direction
+    if direction == 'up':
+        gameMap[rowIndex][colIndex] = gameMap[rowIndex][colIndex][0]
+        if 'B' in gameMap[rowIndex - 1][colIndex]:
+            gameMap[rowIndex - 1][colIndex] = gameMap[rowIndex - 1][colIndex][0]
+            gameMap[rowIndex - 2][colIndex] += 'B'
+            ballsLocations[ballsLocations.index((rowIndex - 1, colIndex))] = (rowIndex - 2, colIndex)
+        gameMap[rowIndex - 1][colIndex] += 'P'
+        playerLocation = (rowIndex - 1, colIndex)
+
+    elif direction == 'down':
+        gameMap[rowIndex][colIndex] = gameMap[rowIndex][colIndex][0]
+        if 'B' in gameMap[rowIndex + 1][colIndex]:
+            gameMap[rowIndex + 1][colIndex] = gameMap[rowIndex + 1][colIndex][0]
+            gameMap[rowIndex + 2][colIndex] += 'B'
+            ballsLocations[ballsLocations.index((rowIndex + 1, colIndex))] = (rowIndex + 2, colIndex)
+        gameMap[rowIndex + 1][colIndex] += 'P'
+        playerLocation = (rowIndex + 1, colIndex)
+    elif direction == 'left':
+        gameMap[rowIndex][colIndex] = gameMap[rowIndex][colIndex][0]
+        if 'B' in gameMap[rowIndex][colIndex - 1]:
+            gameMap[rowIndex][colIndex - 1] = gameMap[rowIndex][colIndex - 1][0]
+            gameMap[rowIndex][colIndex - 2] += 'B'
+            ballsLocations[ballsLocations.index((rowIndex, colIndex - 1))] = (rowIndex, colIndex - 2)
+        gameMap[rowIndex][colIndex - 1] += 'P'
+        playerLocation = (rowIndex, colIndex - 1)
+    elif direction == 'right':
+        gameMap[rowIndex][colIndex] = gameMap[rowIndex][colIndex][0]
+        if 'B' in gameMap[rowIndex][colIndex + 1]:
+            gameMap[rowIndex][colIndex + 1] = gameMap[rowIndex][colIndex + 1][0]
+            gameMap[rowIndex][colIndex + 2] += 'B'
+            ballsLocations[ballsLocations.index((rowIndex, colIndex + 1))] = (rowIndex, colIndex + 2)
+        gameMap[rowIndex][colIndex + 1] += 'P'
+        playerLocation = (rowIndex, colIndex + 1)
+    
+
+    return gameMap, playerLocation, ballsLocations
+
