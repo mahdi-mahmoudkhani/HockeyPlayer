@@ -1,4 +1,4 @@
-from MapHandler import OpstaclesUpdator , PlayerMover 
+from MapHandler import OpstaclesUpdator , PlayerMover , checkIfBallIsInGoal
 
 def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
     
@@ -6,7 +6,7 @@ def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
     This function returns the successor of the current state based on the possible directions of the player.
     '''
     
-    possible_moves = []
+    successors = []
     x , y = playerLocation
     # update the obstacles location
     gameMap, obstacles = OpstaclesUpdator(gameMap, obstacles)
@@ -32,15 +32,27 @@ def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
         #if its not seen then add this step 
         visitedNew = visited.copy()
         visitedNew.add((new_x , new_y))
+      
+        # Check if the new position is a ball
+        new_gameMap, new_playerLocation, new_ballsLocations = PlayerMover(next_gameMap, playerLocation, direction, ballsLocations)
+        #check if in the next move the ball is in the goal
+        new_gameMap, new_ballsLocations, goalLocations, new_obstacles = checkIfBallIsInGoal(new_gameMap, new_ballsLocations, goalLocations, new_obstacles)
         
+        if isValidState(new_gameMap, new_playerLocation, new_ballsLocations, next_obstacles):
+            successors.append((new_gameMap, new_playerLocation, new_ballsLocations, next_obstacles, new_visited))
         
-        if (new_x , new_y) in ballsLocations :
-            new_xBall = new_x + (new_x-playerLocation[0])
-            new_yBall = new_y + (new_y - playerLocation[1])
-            if gameMap[new_xBall][new_yBall] != 'X':
-                possible_moves.append(gameMap[new_x][new_y])
-                    
-                    
-    
+        return successors
+
+        
+def isValidState(gameMap: list, playerLocation: tuple, ballsLocations: list, obstacles: list):
+    '''
+    This function checks if the state of the game is valid by checking wether the balls hit x or not 
+    '''
+    for ball in ballsLocations:
+        if ball in obstacles:
+            return False
+        if ballsLocations.count(ball) > 1:
+            return False
+    return True
             
             
