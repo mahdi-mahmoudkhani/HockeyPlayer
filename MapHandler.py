@@ -58,7 +58,7 @@ class MapState:
         rowIndex, colIndex = self.playerLocation
         # move the player based on the direction
         if direction == 'up':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex][0]
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
             if 'B' in self.gameMap[rowIndex - 1][colIndex]:
                 self.gameMap[rowIndex -
                              1][colIndex] = self.gameMap[rowIndex - 1][colIndex][0]
@@ -69,7 +69,7 @@ class MapState:
             self.playerLocation = (rowIndex - 1, colIndex)
 
         elif direction == 'down':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex][0]
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
             if 'B' in self.gameMap[rowIndex + 1][colIndex]:
                 self.gameMap[rowIndex +
                              1][colIndex] = self.gameMap[rowIndex + 1][colIndex][0]
@@ -79,7 +79,7 @@ class MapState:
             self.gameMap[rowIndex + 1][colIndex] += 'P'
             self.playerLocation = (rowIndex + 1, colIndex)
         elif direction == 'left':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex][0]
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
             if 'B' in self.gameMap[rowIndex][colIndex - 1]:
                 self.gameMap[rowIndex][colIndex -
                                        1] = self.gameMap[rowIndex][colIndex - 1][0]
@@ -89,7 +89,7 @@ class MapState:
             self.gameMap[rowIndex][colIndex - 1] += 'P'
             self.playerLocation = (rowIndex, colIndex - 1)
         elif direction == 'right':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex][0]
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
             if 'B' in self.gameMap[rowIndex][colIndex + 1]:
                 self.gameMap[rowIndex][colIndex +
                                        1] = self.gameMap[rowIndex][colIndex + 1][0]

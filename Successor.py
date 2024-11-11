@@ -43,7 +43,10 @@ def Successor(currentMapState: MapState, visited):
         visitedNew.add((new_x, new_y))
 
         # Move the player
-        newMapState.PlayerMover(direction)
+        try:
+            newMapState.PlayerMover(direction)
+        except:
+            continue
 
         # Check if in the next move the ball is in the goal
         newMapState.checkIfBallIsInGoal()
@@ -68,8 +71,12 @@ def isValidState(currentMapState: MapState):
     Returns:
     bool: True if the game state is valid, False otherwise.
     """
+    obstaclesLocations = []
+    for obstacle in currentMapState.obstacles:
+        obstaclesLocations.append(obstacle[:2])
+
     for ball in currentMapState.ballsLocations:
-        if ball in currentMapState.obstacles:
+        if ball in obstaclesLocations:
             return False
         if currentMapState.ballsLocations.count(ball) > 1:
             return False
