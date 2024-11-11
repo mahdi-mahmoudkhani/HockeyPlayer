@@ -29,6 +29,7 @@ def BFSAlgorithm(initialState: MapState):
         for successor in successors:
             # Check if the successor is the goal state
             if isGoalState(successor):
+                successor.cost += int(successor.gameMap[successor.playerLocation[0]][successor.playerLocation[1]][0])
                 return successor
             # Add the successor to the frontier
             frontier.append(successor)

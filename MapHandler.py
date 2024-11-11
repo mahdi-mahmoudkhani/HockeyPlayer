@@ -1,5 +1,5 @@
 class MapState:
-    def __init__(self, numberOfRows, numberOfColumns, inputMapString, move="", depth=0, cost=0):
+    def __init__(self, numberOfRows, numberOfColumns, inputMapString, move="", depth=0, cost=0, parent=None):
         '''
         This function initializes the map of the game and sets the locations of the player, balls, goals and obstacles.
         '''
@@ -24,6 +24,7 @@ class MapState:
         self.move = move
         self.depth = depth
         self.cost = cost
+        self.parent = parent
 
     def OpstaclesUpdator(self):
         '''
@@ -117,7 +118,7 @@ class MapState:
         '''
         This function returns a copy of the current state of the game.
         '''
-        copiedMapState = MapState(self.numberOfRows, self.numberOfColumns, " ".join([" ".join(row) for row in self.gameMap]), move, depth, cost)
+        copiedMapState = MapState(self.numberOfRows, self.numberOfColumns, " ".join([" ".join(row) for row in self.gameMap]), move, depth, cost, parent= self)
         copiedMapState.obstacles = self.obstacles.copy()
     
         return copiedMapState
