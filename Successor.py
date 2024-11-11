@@ -9,20 +9,19 @@ def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
     successors = []
     x , y = playerLocation
     # update the obstacles location
-    gameMap, obstacles = OpstaclesUpdator(gameMap, obstacles)
+    next_gameMap, new_obstacles = OpstaclesUpdator(gameMap, obstacles)
     
     # Define potential moves with their corresponding locations
     possibleMoves = [("up", -1, 0), ("down", 1, 0), ("left", 0, -1), ("right", 0, 1)]
     
     # Create a list of potential moves, but we need to check various conditions
-    for direction , dx , dy in possibleMoves.items():
+    for direction , dx , dy in possibleMoves:
         new_x = x + dx
         new_y = y + dy
         
         # Check if the new position is within bounds
-        if not( 0<=new_x<len(gameMap) and 0<= new_y< len(gameMap)):
+        if not( 0 <= new_x < len(gameMap) and 0 <= new_y < len(gameMap)):
             continue
-        
         # Check if the new position is not an obstacle (at the player's next move)
         if gameMap[new_x][new_y] == 'X':
             continue
