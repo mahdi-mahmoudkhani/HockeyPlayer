@@ -21,7 +21,10 @@ def BFS(gameMap, playerLocation, ballsLocations, goalLocations, obstacles):
               
         # get the successors of the current state
         successors = Successor(current_gameMap, current_playerLocation, current_ballsLocations, current_obstacles, current_visited)
-       
+        # add the successors to the queue
+        queue.extend(successors)
+        # add the successors to the path
+        path.extend(successors)
         
     # return None if no path is found
     return None
