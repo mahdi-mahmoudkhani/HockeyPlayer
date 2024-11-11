@@ -109,6 +109,16 @@ class MapState:
                 self.gameMap[ball[0]][ball[1]] = 'X'
                 self.obstacles.append((ball[0], ball[1], None))
 
+    def __copy__(self):
+        '''
+        This function returns a copy of the current state of the game.
+        '''
+        copiedMapState = MapState(self.numberOfRows, self.numberOfColumns, " ".join([" ".join(row) for row in self.gameMap]))
+        copiedMapState.obstacles = self.obstacles.copy()
+    
+        return copiedMapState
+    
+
 def convertToInputMapString(userInput):
     map = userInput.split()
     numberOfRows = int(map[0])
