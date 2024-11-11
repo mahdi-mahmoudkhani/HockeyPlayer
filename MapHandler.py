@@ -35,25 +35,21 @@ class MapState:
             # update the location of the obstacle based on its direction
             # update the direction of the obstacle
             if direction == 'left':
-                self.gameMap[rowIndex][colIndex] = '0'
-                self.gameMap[rowIndex][colIndex - 1] = 'X'
                 self.obstacles[self.obstacles.index(obstacle)] = (
                     rowIndex, colIndex - 1, 'down')
             elif direction == 'down':
-                self.gameMap[rowIndex][colIndex] = '0'
-                self.gameMap[rowIndex + 1][colIndex] = 'X'
                 self.obstacles[self.obstacles.index(obstacle)] = (
                     rowIndex + 1, colIndex, 'right')
             elif direction == 'right':
-                self.gameMap[rowIndex][colIndex] = '0'
-                self.gameMap[rowIndex][colIndex + 1] = 'X'
                 self.obstacles[self.obstacles.index(obstacle)] = (
                     rowIndex, colIndex + 1, 'up')
             elif direction == 'up':
-                self.gameMap[rowIndex][colIndex] = '0'
-                self.gameMap[rowIndex - 1][colIndex] = 'X'
                 self.obstacles[self.obstacles.index(obstacle)] = (
                     rowIndex - 1, colIndex, 'left')
+            self.gameMap[rowIndex][colIndex] = '0'
+            
+        for obstacle in self.obstacles:
+            self.gameMap[obstacle[0]][obstacle[1]] = 'X'
 
     def PlayerMover(self, direction: str):
         '''
