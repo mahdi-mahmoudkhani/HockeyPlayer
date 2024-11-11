@@ -9,7 +9,7 @@ def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
     successors = []
     x , y = playerLocation
     # update the obstacles location
-    gameMap, obstacles = OpstaclesUpdator(gameMap, obstacles)
+    next_gameMap, new_obstacles = OpstaclesUpdator(gameMap, obstacles)
     
     # Define potential moves with their corresponding locations
     possibleMoves = [("up", -1, 0), ("down", 1, 0), ("left", 0, -1), ("right", 0, 1)]

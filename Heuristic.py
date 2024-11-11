@@ -1,4 +1,4 @@
-
+from manhattanDist import manhattanDistance
 def heuristic(gameMap: list, playerLocation: tuple, ballsLocations: list, goalLocations: list):
     '''
     This function returns the heuristic value of the current
