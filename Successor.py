@@ -73,4 +73,8 @@ def isValidState(currentMapState: MapState):
             return False
         if currentMapState.ballsLocations.count(ball) > 1:
             return False
+        if ball[0] < 0 or ball[0] >= currentMapState.numberOfRows:
+            return False
+        if ball[1] < 0 or ball[1] >= currentMapState.numberOfColumns:
+            return False
     return True
