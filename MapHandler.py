@@ -108,3 +108,11 @@ class MapState:
                 self.goalLocations.remove(ball)
                 self.gameMap[ball[0]][ball[1]] = 'X'
                 self.obstacles.append((ball[0], ball[1], None))
+
+def convertToInputMapString(userInput):
+    map = userInput.split()
+    numberOfRows = int(map[0])
+    numberOfColumns = int(map[1])
+    inputMapString = " ".join(map[2:])
+
+    return numberOfRows, numberOfColumns, inputMapString
