@@ -1,6 +1,7 @@
 from MapHandler import OpstaclesUpdator , PlayerMover 
 
-def Successor(gameMap: list, playerLocation: tuple, direction: str, obstacles: list, ballsLocations: list , goalLocations: list):
+def Successor(gameMap, playerLocation, ballsLocations, obstacles, visited):
+    
     '''
     This function returns the successor of the current state based on the possible directions of the player.
     '''
@@ -21,10 +22,17 @@ def Successor(gameMap: list, playerLocation: tuple, direction: str, obstacles: l
     # Create a list of potential moves, but we need to check various conditions
     for direction , (new_x , new_y) in possibleMoves.items():
         # Check if the new position is within bounds
-        if 0<=new_x<=len(gameMap) and 0<=new_y<=len(gameMap):
+        if 0<=new_x<len(gameMap) and 0<=new_y<len(gameMap):
             # Check if the new position is not an obstacle (at the player's next move)
-            if gameMap[new_x][new_y] == 'X':
-                # Check if the new position is an obstacle
-                continue
+            if gameMap[new_x][new_y] != 'X':
+                # Check if the new position is not an obstacle
+                if (new_x , new_y) in ballsLocations :
+                    new_xBall = new_x + (new_x-playerLocation[0])
+                    new_yBall = new_y + (new_y - playerLocation[1])
+                    if gameMap[new_xBall][new_yBall] != 'X':
+                        possible_moves.append(gameMap[new_x][new_y])
+                    
+                    
+    
             
             
