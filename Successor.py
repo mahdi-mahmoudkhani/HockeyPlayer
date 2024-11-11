@@ -15,13 +15,16 @@ def Successor(currentMapState: MapState, visited):
     # Create a list of potential moves, but we need to check various conditions
     for direction, dx, dy in possibleMoves:
 
-        # Create a copy of the current state
-        newMapState = currentMapState.__copy__()
-        # Update the obstacles location
-        newMapState.OpstaclesUpdator()
-
         new_x = x + dx
         new_y = y + dy
+
+        # Create a copy of the current state
+        try: 
+            newMapState = currentMapState.__copy__(direction, currentMapState.depth + 1, currentMapState.cost + int(currentMapState.gameMap[x][y][0]))
+        except:
+            newMapState = currentMapState.__copy__(direction, currentMapState.depth + 1, currentMapState.cost)
+        # Update the obstacles location
+        newMapState.OpstaclesUpdator()
 
         # Check if the new position is within bounds
         if not (0 <= new_x < newMapState.numberOfRows and 0 <= new_y < newMapState.numberOfColumns):

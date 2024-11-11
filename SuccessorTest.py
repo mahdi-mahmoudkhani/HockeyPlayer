@@ -1,4 +1,3 @@
-from MapHandlerTest import *
 from Successor import *
 
 userInput = '''
@@ -20,6 +19,8 @@ print(firstsuccessors[0].playerLocation)
 print(firstsuccessors[0].ballsLocations)
 print(firstsuccessors[0].goalLocations)
 print(firstsuccessors[0].obstacles)
+print(firstsuccessors[0].depth)
+print(firstsuccessors[0].cost)
 print("\n\n------------------------------\n\n")
 
 secondsuccessors = Successor(firstsuccessors[0], set())
@@ -28,6 +29,8 @@ print(secondsuccessors[0].playerLocation)
 print(secondsuccessors[0].ballsLocations)
 print(secondsuccessors[0].goalLocations)
 print(secondsuccessors[0].obstacles)
+print(secondsuccessors[0].depth)
+print(secondsuccessors[0].cost)
 print("\n\n------------------------------\n\n")
 
 print(secondsuccessors[1].gameMap)
@@ -35,3 +38,5 @@ print(secondsuccessors[1].playerLocation)
 print(secondsuccessors[1].ballsLocations)
 print(secondsuccessors[1].goalLocations)
 print(secondsuccessors[1].obstacles)
+print(secondsuccessors[1].depth)
+print(secondsuccessors[1].cost)
