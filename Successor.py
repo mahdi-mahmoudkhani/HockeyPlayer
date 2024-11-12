@@ -9,8 +9,8 @@ def Successor(currentMapState: MapState, visited):
     x, y = currentMapState.playerLocation
 
     # Define potential moves with their corresponding locations
-    possibleMoves = [("up", -1, 0), ("down", 1, 0),
-                     ("left", 0, -1), ("right", 0, 1)]
+    possibleMoves = [("right", 0, 1), ("down", 1, 0),
+                     ("left", 0, -1), ("up", -1, 0) ]
 
     # Create a list of potential moves, but we need to check various conditions
     for direction, dx, dy in possibleMoves:
@@ -34,14 +34,6 @@ def Successor(currentMapState: MapState, visited):
         if newMapState.gameMap[new_x][new_y] == 'X':
             continue
 
-        # Check if it was seen before
-        if (new_x, new_y) in visited:
-            continue
-
-        # If it's not seen then add this step
-        visitedNew = visited.copy()
-        visitedNew.add((new_x, new_y))
-
         # Move the player
         try:
             newMapState.PlayerMover(direction)
@@ -50,6 +42,10 @@ def Successor(currentMapState: MapState, visited):
 
         # Check if in the next move the ball is in the goal
         newMapState.checkIfBallIsInGoal()
+
+        # If the state is seen before, then we don't need to consider it again
+        if (newMapState.playerLocation, tuple(newMapState.ballsLocations)) in visited:
+            continue
         
 
         if isValidState(newMapState):
