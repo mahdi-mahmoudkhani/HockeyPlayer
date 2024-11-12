@@ -119,6 +119,12 @@ class MapState:
     
         return copiedMapState
     
+    def __lt__(self, other):
+        '''
+        This function compares two states based on their costs.
+        '''
+        return self.cost < other.cost
+    
 
 def convertToInputMapString(userInput):
     map = userInput.split()
