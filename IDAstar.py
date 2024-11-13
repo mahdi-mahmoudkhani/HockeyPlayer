@@ -1,12 +1,12 @@
 
 from MapHandler import MapState
 from Successor import Successor
-from GoalStateChecker import goalStateChecker
+from GoalStateChecker import isGoalState
 from Heuristic import heuristic
 
 def IDAstarSearch(initialState : MapState):
     def Search(currState , cost , limit):
-        if goalStateChecker(currState):
+        if isGoalState(currState):
             currState.cost += int(currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0])
             return currState , True
         if cost > limit:
