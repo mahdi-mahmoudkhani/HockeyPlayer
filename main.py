@@ -32,31 +32,31 @@ if __name__ == "__main__":
         givenGameMap)
     object = MapState(numberOfRows, numberOfColumns, inputMapString)
 
- # Breadth First Search Algorithm output
+    # Breadth First Search Algorithm output
     finalState = BFSAlgorithm(object)
     print("Breath First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
 
-# Depth First Search Algorithm output
+    # Depth First Search Algorithm output
     finalState = DFSAlgorithm(object)
     print("Depth First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
     
-# Uniform Cost Search Algorithm output
+    # Uniform Cost Search Algorithm output
     finalState = UCSAlgorithm(object)
     print("Uniform Cost Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
 
-# Iterative Deepening Search Algorithm output
+    # Iterative Deepening Search Algorithm output
     finalState = IDSAlgorithm(object)
     print("Iterative Deepening Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
     
-# A* Search Algorithm output
+    # A* Search Algorithm output
     finalState = aStarSearch(object)
     print("A* Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
@@ -64,12 +64,16 @@ if __name__ == "__main__":
     
     # Greedy Best First Search Algorithm output
     finalState = greedyBestFirstSearch(object)
-    print("Greedy Best First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+    if finalState == None:
+        print("No solution found in Greedy Best First Search")
+        print("\n-----------------------------\n")
+    else:
+        print("Greedy Best First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
-    print("\n-----------------------------\n")
-
+        print("\n-----------------------------\n")
+    
     # Iterative Deepening A* Search Algorithm output
-    finalState = IDAstarSearch(object, True)
+    finalState = IDAstarSearch(object)
     print("Iterative Deepening A* Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
          reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
