@@ -1,4 +1,4 @@
-from MapHandler import *
+from MapHandler import MapState , checkIfBallIsInGoal , PlayerMover , OpstaclesUpdator 
 
 userInput = '''
             6 10

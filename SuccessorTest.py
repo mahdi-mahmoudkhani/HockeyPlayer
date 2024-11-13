@@ -1,4 +1,4 @@
-from Successor import *
+from Successor import Successor , isValidState
 
 userInput = '''
             6 10
