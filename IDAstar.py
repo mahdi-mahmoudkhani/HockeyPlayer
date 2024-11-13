@@ -6,21 +6,25 @@ from Heuristic import heuristic
 
 
 def IDAstarSearch(initialState: MapState):
-    visited = set()
 
     def Search(currState, cost, limit):
         if isGoalState(currState):
             currState.cost += int(
                 currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0])
             return currState, True
-        if cost > limit:
+        
+        if cost >= limit:
             return None, False  # not found
+        
         newCost = float('inf')
-        successors = Successor(currState, visited)
+        found = False
+        successors = Successor(currState, set())
         for successor in successors:
-            if successor not in visited:
-                visited.add((successor.playerLocation,
-                            tuple(successor.ballsLocations)))
+            try:
+                if (successor.playerLocation, tuple(successor.ballsLocations)) != (currState.parent.playerLocation, tuple(currState.parent.ballsLocations)):
+                    newCost = cost + heuristic(successor) + successor.cost
+                    result, found = Search(successor, newCost, limit)
+            except:
                 newCost = cost + heuristic(successor) + successor.cost
                 result, found = Search(successor, newCost, limit)
             if found:
@@ -28,6 +32,7 @@ def IDAstarSearch(initialState: MapState):
         return None, False  # not found
 
     limit = heuristic(initialState)
+
     while True:
         print("Searching with limit: ", limit, "using IDA*")
         result, found = Search(initialState, 0, limit)
