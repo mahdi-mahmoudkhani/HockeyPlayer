@@ -1,6 +1,7 @@
 from GoalStateChecker import isGoalState
 from Successor import Successor
 from MapHandler import MapState
+from queue import PriorityQueue
 def aStarSearch(initialState: MapState):
     visited  = set()
     frontier = PriorityQueue()

@@ -1,5 +1,5 @@
 from Successor import Successor , isValidState
-
+from MapHandler import MapState , convertToInputMapString
 userInput = '''
             6 10
             1P 1B 1G 1 0 X 1 1 1 1
