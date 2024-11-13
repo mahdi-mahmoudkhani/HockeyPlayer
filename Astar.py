@@ -19,7 +19,7 @@ def aStarSearch(initialState: MapState):
         for Successor in Successor(currState,visited):
             if Successor.playerLocation not in visited:
                 visited.add(Successor.playerLocation)
-                frontier.put((Successor.cost +int(gameMap[playerLocation[0]][playerLocation[1]][0]),Successor))
+                frontier.put(Successor.cost,Successor)
             
             
         
