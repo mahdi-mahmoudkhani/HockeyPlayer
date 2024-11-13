@@ -8,7 +8,19 @@ from Heuristic import Heuristic
 def IDAstarSearch(initialState : MapState):
     def Search(currState , cost , limit):
         if goalStateChecker(currState):
-            currState.cost + int(currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0])
+            currState.cost += int(currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0])
             return currState , True
+        if cost > limit:
+            return None , False # not found
+        newCost = float('inf')
+        successors = Successor(currState)
+        for successor in successors:
+            newCost = cost + Heuristic(successor) + successor.cost
+            result , found = Search(successor , newCost , limit)
+            if found:
+                return result , True
+        return None , False # not found
+            
+            
+            
         
-    
