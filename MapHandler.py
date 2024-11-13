@@ -125,11 +125,3 @@ class MapState:
         '''
         return self.cost < other.cost
     
-
-def convertToInputMapString(userInput):
-    map = userInput.split()
-    numberOfRows = int(map[0])
-    numberOfColumns = int(map[1])
-    inputMapString = " ".join(map[2:])
-
-    return numberOfRows, numberOfColumns, inputMapString

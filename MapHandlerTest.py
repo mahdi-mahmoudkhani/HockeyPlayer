@@ -1,4 +1,4 @@
-from MapHandler import MapState, convertToInputMapString
+'''from MapHandler import MapState, convertToInputMapString
 
 userInput = '''
             6 10
@@ -32,3 +32,4 @@ print(object.gameMap)
 print(object.ballsLocations)
 print(object.goalLocations)
 print(object.obstacles)
+'''
