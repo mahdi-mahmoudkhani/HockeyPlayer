@@ -2,7 +2,7 @@ from MapHandler import MapState
 from Successor import Successor
 from GoalStateChecker import isGoalState
 from queue import PriorityQueue
-from Heuristic import Heuristic
+from Heuristic import heuristic
 
 def greedyBestFirstSearch(initialState: MapState):
     visited  = set()
@@ -23,7 +23,7 @@ def greedyBestFirstSearch(initialState: MapState):
         for succesor in successors :
             if succesor.playerLocation not in visited:
                 visited.add(succesor.playerLocation)
-                frontier.put(Heuristic(succesor) ,succesor)
+                frontier.put(heuristic(succesor) ,succesor)
         
     return None
                

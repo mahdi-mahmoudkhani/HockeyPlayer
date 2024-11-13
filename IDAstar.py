@@ -3,7 +3,7 @@ from MapHandler import MapState
 from Successor import Successor
 from queue import PriorityQueue
 from GoalStateChecker import goalStateChecker
-from Heuristic import Heuristic
+from Heuristic import heuristic
 
 def IDAstarSearch(initialState : MapState):
     def Search(currState , cost , limit):
@@ -15,7 +15,7 @@ def IDAstarSearch(initialState : MapState):
         newCost = float('inf')
         successors = Successor(currState)
         for successor in successors:
-            newCost = cost + Heuristic(successor) + successor.cost
+            newCost = cost + heuristic(successor) + successor.cost
             result , found = Search(successor , newCost , limit)
             if found:
                 return result , True

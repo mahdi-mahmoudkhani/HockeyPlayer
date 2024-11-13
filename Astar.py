@@ -2,6 +2,7 @@ from GoalStateChecker import isGoalState
 from Successor import Successor
 from MapHandler import MapState
 from queue import PriorityQueue
+from Heuristic import heuristic
 def aStarSearch(initialState: MapState):
     visited  = set()
     frontier = PriorityQueue()
@@ -23,7 +24,7 @@ def aStarSearch(initialState: MapState):
         for succesor in successors:
             if succesor.playerLocation not in visited:
                 visited.add(succesor.playerLocation)
-                totalCost = Heuristic(succesor) + succesor.cost
+                totalCost = heuristic(succesor) + succesor.cost
                 frontier.put(totalCost,succesor)
             
             
