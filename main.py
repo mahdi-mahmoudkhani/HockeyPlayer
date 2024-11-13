@@ -38,3 +38,20 @@ if __name__ == "__main__":
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
 
+# Depth First Search Algorithm output
+    finalState = DFSAlgorithm(object)
+    print("Depth First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
+    
+# Uniform Cost Search Algorithm output
+    finalState = UCSAlgorithm(object)
+    print("Uniform Cost Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
+
+# Iterative Deepening Search Algorithm output
+    finalState = IDSAlgorithm(object)
+    print("Iterative Deepening Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
