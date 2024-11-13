@@ -7,9 +7,6 @@ def DLSAlgorithm(mapState: MapState, limit):
     stack = []
     stack.append(mapState)
 
-    # Initialize the visited list
-    visited = []
-
     # While the stack is not empty
     while stack:
         # Pop the last element from the stack
@@ -27,17 +24,18 @@ def DLSAlgorithm(mapState: MapState, limit):
         
         # If the current state is not the goal state
         else:
-            # Add the current state to the visited list
-            visited.append((currentState.playerLocation,
-                            tuple(currentState.ballsLocations)))
-
             # Get the successors of the current state
-            successors = Successor(currentState, visited)
+            successors = Successor(currentState, set())
 
             # For each successor
-            for successor in successors:
-                # Add the successor to the stack
-                stack.append(successor)
+            for successor in successors[::-1]:
+                # If the successor is not visited
+                try:
+                    if (successor.playerLocation, tuple(successor.ballsLocations)) != (currentState.parent.playerLocation, tuple(currentState.parent.ballsLocations)):
+                        # Add the successor to the stack
+                        stack.append(successor)
+                except:
+                    stack.append(successor)
 
     # If the stack is empty and the goal state is not found
     return None
