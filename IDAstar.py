@@ -1,7 +1,6 @@
 
 from MapHandler import MapState
 from Successor import Successor
-from queue import PriorityQueue
 from GoalStateChecker import goalStateChecker
 from Heuristic import heuristic
 
