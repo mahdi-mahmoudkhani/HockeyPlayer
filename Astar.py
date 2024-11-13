@@ -17,10 +17,14 @@ def aStarSearch(initialState: MapState):
             currState.cost += int(currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0])
             currState.depth += 1
             return currState
-        for Successor in Successor(currState,visited):
+        
+        successors = Successor(currState,visited)
+        
+        for Successor in successors:
             if Successor.playerLocation not in visited:
                 visited.add(Successor.playerLocation)
-                frontier.put(Successor.cost,Successor)
+                totalCost = Heuristic(Successor) + Successor.cost
+                frontier.put(totalCost,Successor)
             
             
         
