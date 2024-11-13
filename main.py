@@ -31,3 +31,10 @@ if __name__ == "__main__":
     numberOfRows, numberOfColumns, inputMapString = convertToInputMapString(
         givenGameMap)
     object = MapState(numberOfRows, numberOfColumns, inputMapString)
+
+ # Breadth First Search Algorithm output
+    finalState = BFSAlgorithm(object)
+    print("Breath First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
+
