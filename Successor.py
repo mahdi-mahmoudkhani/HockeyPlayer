@@ -1,5 +1,4 @@
-
-from MapHandler import MapState , PlayerMover , checkIfBallIsInGoal , OpstaclesUpdator
+from MapHandler import MapState
 def Successor(currentMapState: MapState, visited):
     '''
     This function returns the successor of the current state based on the possible directions of the player.

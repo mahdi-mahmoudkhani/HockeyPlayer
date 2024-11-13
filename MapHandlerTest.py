@@ -1,4 +1,4 @@
-import MapHandler
+from MapHandler import MapState, convertToInputMapString
 
 userInput = '''
             6 10

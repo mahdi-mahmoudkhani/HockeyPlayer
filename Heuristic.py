@@ -1,5 +1,5 @@
 from manhattanDist import manhattanDistance
-from MapHandler import *
+from MapHandler import MapState
 
 def heuristic(mapState: MapState):
     '''
