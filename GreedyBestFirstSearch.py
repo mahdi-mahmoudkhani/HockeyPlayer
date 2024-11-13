@@ -23,7 +23,8 @@ def greedyBestFirstSearch(initialState: MapState):
         for succesor in successors :
             if succesor.playerLocation not in visited:
                 visited.add(succesor.playerLocation)
-                frontier.put(heuristic(succesor) ,succesor)
+                totalCost = cost + int(currState.gameMap[currState.playerLocation[0]][currState.playerLocation[1]][0]) + heuristic(succesor)
+                frontier.put(totalCost ,succesor)
         
     return None
                
