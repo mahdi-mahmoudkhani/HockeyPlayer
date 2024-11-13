@@ -1,4 +1,6 @@
 from MapHandler import MapState
+
+
 def Successor(currentMapState: MapState, visited):
     '''
     This function returns the successor of the current state based on the possible directions of the player.
@@ -9,7 +11,7 @@ def Successor(currentMapState: MapState, visited):
 
     # Define potential moves with their corresponding locations
     possibleMoves = [("right", 0, 1), ("down", 1, 0),
-                     ("left", 0, -1), ("up", -1, 0) ]
+                     ("left", 0, -1), ("up", -1, 0)]
 
     # Create a list of potential moves, but we need to check various conditions
     for direction, dx, dy in possibleMoves:
@@ -18,10 +20,12 @@ def Successor(currentMapState: MapState, visited):
         new_y = y + dy
 
         # Create a copy of the current state
-        try: 
-            newMapState = currentMapState.__copy__(direction, currentMapState.depth + 1, currentMapState.cost + int(currentMapState.gameMap[x][y][0]))
+        try:
+            newMapState = currentMapState.__copy__(
+                direction, currentMapState.depth + 1, currentMapState.cost + int(currentMapState.gameMap[x][y][0]))
         except:
-            newMapState = currentMapState.__copy__(direction, currentMapState.depth + 1, currentMapState.cost)
+            newMapState = currentMapState.__copy__(
+                direction, currentMapState.depth + 1, currentMapState.cost)
         # Update the obstacles location
         newMapState.OpstaclesUpdator()
 
@@ -45,7 +49,6 @@ def Successor(currentMapState: MapState, visited):
         # If the state is seen before, then we don't need to consider it again
         if (newMapState.playerLocation, tuple(newMapState.ballsLocations)) in visited:
             continue
-        
 
         if isValidState(newMapState):
             successors.append(newMapState)

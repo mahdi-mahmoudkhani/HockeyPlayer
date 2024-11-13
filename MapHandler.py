@@ -47,7 +47,7 @@ class MapState:
                 self.obstacles[self.obstacles.index(obstacle)] = (
                     rowIndex - 1, colIndex, 'left')
             self.gameMap[rowIndex][colIndex] = '0'
-            
+
         for obstacle in self.obstacles:
             self.gameMap[obstacle[0]][obstacle[1]] = 'X'
 
@@ -58,7 +58,8 @@ class MapState:
         rowIndex, colIndex = self.playerLocation
         # move the player based on the direction
         if direction == 'up':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace(
+                'P', '')
             if 'B' in self.gameMap[rowIndex - 1][colIndex]:
                 self.gameMap[rowIndex -
                              1][colIndex] = self.gameMap[rowIndex - 1][colIndex][0]
@@ -69,7 +70,8 @@ class MapState:
             self.playerLocation = (rowIndex - 1, colIndex)
 
         elif direction == 'down':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace(
+                'P', '')
             if 'B' in self.gameMap[rowIndex + 1][colIndex]:
                 self.gameMap[rowIndex +
                              1][colIndex] = self.gameMap[rowIndex + 1][colIndex][0]
@@ -79,7 +81,8 @@ class MapState:
             self.gameMap[rowIndex + 1][colIndex] += 'P'
             self.playerLocation = (rowIndex + 1, colIndex)
         elif direction == 'left':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace(
+                'P', '')
             if 'B' in self.gameMap[rowIndex][colIndex - 1]:
                 self.gameMap[rowIndex][colIndex -
                                        1] = self.gameMap[rowIndex][colIndex - 1][0]
@@ -89,7 +92,8 @@ class MapState:
             self.gameMap[rowIndex][colIndex - 1] += 'P'
             self.playerLocation = (rowIndex, colIndex - 1)
         elif direction == 'right':
-            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace('P', '')
+            self.gameMap[rowIndex][colIndex] = self.gameMap[rowIndex][colIndex].replace(
+                'P', '')
             if 'B' in self.gameMap[rowIndex][colIndex + 1]:
                 self.gameMap[rowIndex][colIndex +
                                        1] = self.gameMap[rowIndex][colIndex + 1][0]
@@ -114,14 +118,14 @@ class MapState:
         '''
         This function returns a copy of the current state of the game.
         '''
-        copiedMapState = MapState(self.numberOfRows, self.numberOfColumns, " ".join([" ".join(row) for row in self.gameMap]), move, depth, cost, parent= self)
+        copiedMapState = MapState(self.numberOfRows, self.numberOfColumns, " ".join(
+            [" ".join(row) for row in self.gameMap]), move, depth, cost, parent=self)
         copiedMapState.obstacles = self.obstacles.copy()
-    
+
         return copiedMapState
-    
+
     def __lt__(self, other):
         '''
         This function compares two states based on their costs.
         '''
         return self.cost < other.cost
-    

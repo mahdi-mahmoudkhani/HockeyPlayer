@@ -2,6 +2,7 @@ from MapHandler import MapState
 from GoalStateChecker import isGoalState
 from Successor import Successor
 
+
 def DFSAlgorithm(mapState: MapState):
     # Initialize the stack
     stack = []

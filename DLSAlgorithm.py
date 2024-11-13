@@ -2,6 +2,7 @@ from MapHandler import MapState
 from GoalStateChecker import isGoalState
 from Successor import Successor
 
+
 def DLSAlgorithm(mapState: MapState, limit):
     # Initialize the stack
     stack = []
@@ -21,7 +22,7 @@ def DLSAlgorithm(mapState: MapState, limit):
 
         elif currentState.depth >= limit:
             continue
-        
+
         # If the current state is not the goal state
         else:
             # Get the successors of the current state

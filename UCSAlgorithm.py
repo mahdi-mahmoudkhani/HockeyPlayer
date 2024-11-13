@@ -3,6 +3,7 @@ from GoalStateChecker import isGoalState
 from Successor import Successor
 import heapq
 
+
 def UCSAlgorithm(mapState: MapState):
     '''
     This function is the implementation of the Uniform Cost Search Algorithm.
