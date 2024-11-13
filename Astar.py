@@ -29,5 +29,3 @@ def aStarSearch(initialState: MapState):
             
         
     return None
-    
-    
