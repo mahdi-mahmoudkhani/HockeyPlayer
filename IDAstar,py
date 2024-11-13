@@ -20,7 +20,11 @@ def IDAstarSearch(initialState : MapState):
             if found:
                 return result , True
         return None , False # not found
-            
-            
-            
-        
+    
+    limit = Heuristic(initialState)
+    while True:
+        result , found = Search(initialState , 0 , limit)
+        if found:
+            return result
+        limit += 1
+    return None
