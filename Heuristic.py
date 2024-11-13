@@ -13,5 +13,7 @@ def heuristic(mapState: MapState):
                       for ball in mapState.ballsLocations 
                       for goal in mapState.goalLocations
                       if ball not in mapState.goalLocations], default=None)
-
+    
+    if playerToBall is None or ballToGoal is None:
+        return float('inf')
     return playerToBall + ballToGoal

@@ -25,7 +25,7 @@ def aStarSearch(initialState: MapState):
             if succesor.playerLocation not in visited:
                 visited.add(succesor.playerLocation)
                 totalCost = heuristic(succesor) + succesor.cost
-                frontier.put(totalCost,succesor)
+                frontier.put((totalCost,succesor))
             
             
         
