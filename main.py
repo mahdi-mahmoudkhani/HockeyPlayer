@@ -69,7 +69,7 @@ if __name__ == "__main__":
     print("\n-----------------------------\n")
 
     # Iterative Deepening A* Search Algorithm output
-    finalState = IDSAlgorithm(object, True)
+    finalState = IDAstarSearch(object, True)
     print("Iterative Deepening A* Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
          reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
