@@ -16,4 +16,18 @@ def convertToInputMapString(userInput):
 
     return numberOfRows, numberOfColumns, inputMapString
 
+if __name__ == "__main__":
 
+    givenGameMap = '''
+                    6 10
+                    1P 1B 1G 1 0 X 1 1 1 1
+                    0 X 1 1 0 0 0 1 0 X
+                    0 0 1 2B 2 2 2B 1 0 0
+                    1 1 0 X X 2 2 1 1G 1
+                    1 1 0 0 0 2 1 1 1 1
+                    1 1 1 1 1 1G 1 1 1 1
+                    '''
+   
+    numberOfRows, numberOfColumns, inputMapString = convertToInputMapString(
+        givenGameMap)
+    object = MapState(numberOfRows, numberOfColumns, inputMapString)

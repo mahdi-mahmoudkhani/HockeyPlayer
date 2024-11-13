@@ -1,6 +1,6 @@
 '''from MapHandler import MapState, convertToInputMapString
 
-userInput = '''
+userInput = 
             6 10
             1P 1B 1G 1 0 X 1 1 1 1
             0 X 1 1 0 0 0 1 0 X
@@ -8,7 +8,7 @@ userInput = '''
             1 1 0 X X 2 2 1 1G 1
             1 1 0 0 0 2 1 1 1 1
             1 1 1 1 1 1G 1 1 1 1
-            '''
+            
 numberOfRows, numberOfColumns, inputMapString = convertToInputMapString(
     userInput)
 object = MapState(numberOfRows, numberOfColumns, inputMapString)
