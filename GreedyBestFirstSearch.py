@@ -10,6 +10,7 @@ def greedyBestFirstSearch(initialState: MapState):
     frontier.put((0,initialState))
     visited.add(initialState.playerLocation)
     
+    
     while not frontier.empty():
         cost , currState = frontier.get()
         if isGoalState(currState):
@@ -17,10 +18,12 @@ def greedyBestFirstSearch(initialState: MapState):
             currState.depth += 1
             return currState
         
-        for Successor in Successor(currState , visited=visited):
+        successors = Successor(currState,visited)
+        
+        for Successor in successors :
             if Successor.playerLocation not in visited:
                 visited.add(Successor.playerLocation)
-                frontier.put((Heuristic(Successor) + Successor.cost ,Successor))
+                frontier.put(Heuristic(Successor) ,Successor)
         
     return None
                
