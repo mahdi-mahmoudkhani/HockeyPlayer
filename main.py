@@ -55,3 +55,21 @@ if __name__ == "__main__":
     print("Iterative Deepening Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
     print("\n-----------------------------\n")
+    
+# A* Search Algorithm output
+    finalState = aStarSearch(object)
+    print("A* Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
+    
+    # Greedy Best First Search Algorithm output
+    finalState = greedyBestFirstSearch(object)
+    print("Greedy Best First Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+        reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
+
+    # Iterative Deepening A* Search Algorithm output
+    finalState = IDSAlgorithm(object, True)
+    print("Iterative Deepening A* Search answer:\nsteps: {}\ntotal_cost: {}\ntotal_depth: {}".format(
+         reconstruct_path(finalState)[:50], finalState.cost, finalState.depth))
+    print("\n-----------------------------\n")
