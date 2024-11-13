@@ -20,6 +20,9 @@ def greedyBestFirstSearch(initialState: MapState):
         for Successor in Successor(currState , visited=visited):
             if Successor.playerLocation not in visited:
                 visited.add(Successor.playerLocation)
+                frontier.put((Heuristic(Successor) + Successor.cost ,Successor))
+        
+    return None
                
         
 
