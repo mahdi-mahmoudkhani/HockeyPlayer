@@ -32,7 +32,7 @@ def DLSAlgorithm(mapState: MapState, limit):
             for successor in successors[::-1]:
                 # If the successor is not visited
                 try:
-                    if (successor.playerLocation, tuple(successor.ballsLocations)) != (currentState.parent.playerLocation, tuple(currentState.parent.ballsLocations)):
+                    if (successor.playerLocation, tuple(successor.ballsLocations), tuple(successor.obstacles)) != (currentState.parent.playerLocation, tuple(currentState.parent.ballsLocations), tuple(successor.parent.obstacles)):
                         # Add the successor to the stack
                         stack.append(successor)
                 except:

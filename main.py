@@ -21,14 +21,32 @@ def convertToInputMapString(userInput):
 if __name__ == "__main__":
 
     givenGameMap = '''
-                    6 10
-                    1P 1B 1G 1 0 X 1 1 1 1
-                    0 X 1 1 0 0 0 1 0 X
-                    0 0 1 2B 2 2 2B 1 0 0
-                    1 1 0 X X 2 2 1 1G 1
-                    1 1 0 0 0 2 1 1 1 1
-                    1 1 1 1 1 1G 1 1 1 1
+                    4 5
+                    1 3 0 X 1
+                    0P 1B 0 0 1G
+                    0 4 0 X 1
+                    0 0 0 0 1
                     '''
+
+    # givenGameMap = '''
+    #                 6 4
+    #                 1 3 1 1
+    #                 0P 1B 0B 1G
+    #                 0 4 1 1
+    #                 0 0 1 1
+    #                 1 1G 1 1
+    #                 1 1 1 1
+    #                 '''
+
+    # givenGameMap = '''
+    #                 6 2
+    #                 1P 3
+    #                 0B 3
+    #                 0 X
+    #                 0 0
+    #                 1G 1
+    #                 1 1
+    #                 '''
 
     numberOfRows, numberOfColumns, inputMapString = convertToInputMapString(
         givenGameMap)

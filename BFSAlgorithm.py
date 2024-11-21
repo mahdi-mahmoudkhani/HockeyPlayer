@@ -22,7 +22,8 @@ def BFSAlgorithm(initialState: MapState):
         currentState = frontier.pop(0)
         # Add the current state to the explored set
         explored.add((currentState.playerLocation,
-                     tuple(currentState.ballsLocations)))
+                     tuple(currentState.ballsLocations),
+                     tuple(currentState.obstacles)))
 
         # Get the successors of the current state
         successors = Successor(currentState, explored)

@@ -25,7 +25,8 @@ def UCSAlgorithm(mapState: MapState):
         else:
             # Add the current state to the visited list
             visited.append((currentState.playerLocation,
-                            tuple(currentState.ballsLocations)))
+                            tuple(currentState.ballsLocations),
+                            tuple(currentState.obstacles)))
             # Get the successors of the current state
             successors = Successor(currentState, visited)
             for successor in successors:

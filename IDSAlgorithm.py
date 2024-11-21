@@ -9,7 +9,6 @@ def IDSAlgorithm(mapState: MapState, maxLimit = float('inf')):
     '''
     depth = 0
     while depth <= maxLimit:
-        print("Searching at depth:", depth, "using IDS Algorithm")
         result = DLSAlgorithm(mapState, depth)
         if result is not None:
             return result

@@ -47,7 +47,7 @@ def Successor(currentMapState: MapState, visited):
         newMapState.checkIfBallIsInGoal()
 
         # If the state is seen before, then we don't need to consider it again
-        if (newMapState.playerLocation, tuple(newMapState.ballsLocations)) in visited:
+        if (newMapState.playerLocation, tuple(newMapState.ballsLocations), tuple(newMapState.obstacles)) in visited:
             continue
 
         if isValidState(newMapState):

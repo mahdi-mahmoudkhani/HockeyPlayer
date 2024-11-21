@@ -21,7 +21,7 @@ def IDAstarSearch(initialState: MapState):
         successors = Successor(currState, set())
         for successor in successors:
             try:
-                if (successor.playerLocation, tuple(successor.ballsLocations)) != (currState.parent.playerLocation, tuple(currState.parent.ballsLocations)):
+                if ((successor.playerLocation, tuple(successor.ballsLocations), tuple(successor.obstacles))) != (currState.parent.playerLocation, tuple(currState.parent.ballsLocations), tuple(currState.parent.obstacles)):
                     newCost = cost + heuristic(successor) + successor.cost
                     result, found = Search(successor, newCost, limit)
             except:
@@ -34,7 +34,6 @@ def IDAstarSearch(initialState: MapState):
     limit = heuristic(initialState)
 
     while True:
-        print("Searching with limit: ", limit, "using IDA*")
         result, found = Search(initialState, 0, limit)
         if found:
             return result
